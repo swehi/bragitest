@@ -1,12 +1,10 @@
 package io.viesure.bragiapp.viewmodel
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import io.reactivex.rxjava3.core.Observable
-import io.reactivex.rxjava3.disposables.Disposable
 import io.reactivex.rxjava3.functions.Consumer
 import io.reactivex.rxjava3.schedulers.Schedulers
 import io.viesure.bragiapp.model.ConnectionState
@@ -20,10 +18,7 @@ class LoginViewModel @Inject constructor(networkConnectionManager: NetworkConnec
     private val _networkStatus = MutableLiveData<ConnectionState?>()
     val networkStatus: LiveData<ConnectionState?> = _networkStatus
 
-    lateinit var disposable: Disposable
-
-    val consumer = Consumer<ConnectionState> {
-        Log.d("LOGIN", it.name)
+    private val consumer = Consumer<ConnectionState> {
         _networkStatus.postValue(it)
     }
 

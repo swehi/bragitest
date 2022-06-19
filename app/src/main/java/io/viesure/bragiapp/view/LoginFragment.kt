@@ -1,7 +1,6 @@
 package io.viesure.bragiapp.view
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -33,7 +32,6 @@ class LoginFragment : BaseFragment() {
             navigateToSignup()
         }
         binding.loginCheckConnectionButton.setOnClickListener {
-            //show dialog
             loginViewModel.networkStatus.value?.let { status -> showMessageSentPopup(status) }
         }
         binding.loginSendCommandsButton.setOnClickListener {
@@ -44,7 +42,6 @@ class LoginFragment : BaseFragment() {
     private fun observeEvents() {
         loginViewModel.networkStatus.observe(viewLifecycleOwner) { state ->
             state?.let {
-                Log.d("LOGINFRAGMENT", it.name)
                 showNetworkPopup(it)
             }
         }

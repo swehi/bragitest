@@ -9,7 +9,6 @@ import dagger.hilt.android.AndroidEntryPoint
 import io.viesure.bragiapp.databinding.ForgotPasswordFragmentBinding
 import io.viesure.bragiapp.navigation.navigateToLogin
 import io.viesure.bragiapp.viewmodel.ForgotPasswordViewModel
-import io.viesure.bragiapp.viewmodel.LoginViewModel
 
 @AndroidEntryPoint
 class ForgotPasswordFragment : BaseFragment() {
@@ -25,12 +24,16 @@ class ForgotPasswordFragment : BaseFragment() {
     ): View {
         binding = ForgotPasswordFragmentBinding.inflate(inflater, container, false)
         registerClick()
+        observeEvents()
         return binding.root
     }
 
-    private fun registerClick(){
+    private fun registerClick() {
         binding.forgotPasswordNavigateButton.setOnClickListener {
             navigateToLogin()
+        }
+        binding.forgotPasswordCheckConnectionButton.setOnClickListener {
+            forgotPasswordViewModel.networkStatus.value?.let { status -> showMessageSentPopup(status) }
         }
     }
 

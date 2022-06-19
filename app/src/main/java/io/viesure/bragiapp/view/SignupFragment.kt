@@ -8,7 +8,6 @@ import androidx.fragment.app.viewModels
 import dagger.hilt.android.AndroidEntryPoint
 import io.viesure.bragiapp.databinding.SignupFragmentBinding
 import io.viesure.bragiapp.navigation.navigateToForgotPassword
-import io.viesure.bragiapp.viewmodel.LoginViewModel
 import io.viesure.bragiapp.viewmodel.SignupViewModel
 
 @AndroidEntryPoint
@@ -31,6 +30,9 @@ class SignupFragment : BaseFragment() {
     private fun registerClick() {
         binding.signupNavigateButton.setOnClickListener {
             navigateToForgotPassword()
+        }
+        binding.signupCheckConnectionButton.setOnClickListener {
+            signupViewModel.networkStatus.value?.let { status -> showMessageSentPopup(status) }
         }
     }
 
