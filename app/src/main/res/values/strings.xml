@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">BragiApp</string>
+    <string name="message_sent">Message Sent</string>
+    <string name="navigate_login">Navigate to login</string>
+    <string name="navigate_signup">Navigate to signup</string>
+    <string name="navigate_forgot_pass">Navigate to forgot password</string>
+    <string name="send_commands">Send commands</string>
+    <string name="check_connection">Check connection</string>
+</resources>
