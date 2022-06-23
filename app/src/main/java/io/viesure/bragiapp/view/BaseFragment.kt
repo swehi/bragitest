@@ -7,7 +7,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import io.viesure.bragiapp.R
 import io.viesure.bragiapp.databinding.ToastPopupBinding
-import io.viesure.bragiapp.model.ConnectionState
+import io.viesure.bragiapp.data.model.ConnectionState
 
 
 open class BaseFragment : Fragment() {
@@ -29,4 +29,7 @@ open class BaseFragment : Fragment() {
         }
     }
 
+
+
 }
+

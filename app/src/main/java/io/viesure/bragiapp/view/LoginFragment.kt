@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.annotation.VisibleForTesting
 import androidx.fragment.app.viewModels
 import dagger.hilt.android.AndroidEntryPoint
 import io.viesure.bragiapp.databinding.LoginFragmentBinding
@@ -13,8 +14,10 @@ import io.viesure.bragiapp.viewmodel.LoginViewModel
 @AndroidEntryPoint
 class LoginFragment : BaseFragment() {
 
-    private lateinit var binding: LoginFragmentBinding
-    private val loginViewModel: LoginViewModel by viewModels()
+    @VisibleForTesting(otherwise = VisibleForTesting.PRIVATE)
+    lateinit var binding: LoginFragmentBinding
+    @VisibleForTesting(otherwise = VisibleForTesting.PRIVATE)
+    val loginViewModel: LoginViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -45,6 +48,16 @@ class LoginFragment : BaseFragment() {
                 showNetworkPopup(it)
             }
         }
+    }
+
+    override fun onResume() {
+        loginViewModel.subscribeToNetworkEvents()
+        super.onResume()
+    }
+
+    override fun onPause() {
+        loginViewModel.unSubscribeFromNetworkEvents()
+        super.onPause()
     }
 
 }

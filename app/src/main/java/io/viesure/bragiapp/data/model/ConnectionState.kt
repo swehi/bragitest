@@ -1,4 +1,4 @@
-package io.viesure.bragiapp.model
+package io.viesure.bragiapp.data.model
 
 /**
  * Enum containing connection states

@@ -44,4 +44,14 @@ class ForgotPasswordFragment : BaseFragment() {
             }
         }
     }
+
+    override fun onResume() {
+        forgotPasswordViewModel.subscribeToNetworkEvents()
+        super.onResume()
+    }
+
+    override fun onPause() {
+        forgotPasswordViewModel.unSubscribeFromNetworkEvents()
+        super.onPause()
+    }
 }

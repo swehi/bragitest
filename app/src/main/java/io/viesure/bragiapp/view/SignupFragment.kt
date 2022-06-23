@@ -43,4 +43,14 @@ class SignupFragment : BaseFragment() {
             }
         }
     }
+
+    override fun onResume() {
+        signupViewModel.subscribeToNetworkEvents()
+        super.onResume()
+    }
+
+    override fun onPause() {
+        signupViewModel.unSubscribeFromNetworkEvents()
+        super.onPause()
+    }
 }
